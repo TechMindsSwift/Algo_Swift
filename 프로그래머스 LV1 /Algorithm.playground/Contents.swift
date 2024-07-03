@@ -214,3 +214,182 @@ func solution(_ s:String) -> Bool {
 //    }
 //    return re
 //}
+
+//예산
+//
+//import Foundation
+//
+//func solution(_ d:[Int], _ budget:Int) -> Int {
+//    var budget = budget
+//    return d.sorted().filter{
+//        budget -= $0
+//        return budget >= 0
+//    }.count
+//}
+// 크기가 작은 부분문자열
+//func solution(_ t:String, _ p:String) -> Int {
+//    var str = Array(t)
+//    var cnt = 0
+//    for i in 0..<t.count - p.count {
+//        var temp: String = ""
+//        for j in i..<i+p.count {
+//            temp.append(str[j])
+//        }
+//        if Int(temp)! <= Int(p)! {
+//            cnt += 1
+//        }
+//    }
+//    return cnt
+//    
+//}
+
+// 이상한 문자 만들기
+//func solution(_ s:String) -> String {
+//    var result:[String] = []
+//    let a = s.components(separatedBy: " ") // ["try", "hello", "world"
+//    for i in a {
+//        var r = ""
+//        for (index,element) in i.enumerated() {
+//            r += index.isMultiple(of: 2) ? element.uppercased() : element.lowercased()
+//        }
+//        result.append(r)
+//    }
+//    return result.joined(separator: " ")
+//}
+//print(solution("try hello world "))
+
+// 삼총사
+
+//func solution(_ number:[Int]) -> Int {
+//    var result = 0
+//    for a in 0...number.count-3
+//    {
+//        for b in a+1...number.count-2
+//        {
+//            for c in b+1...number.count-1
+//            {
+//                result += number[a] + number[b] + number[c] == 0 ? 1 : 0
+//            }
+//        }
+//    }
+//
+//    return result
+//}
+
+// 최소 직사각형
+// 가로일때 가장 큰 수/ 세로일때 가장 큰 수
+// 그냥 쓸 경우 / 뒤집을 경우 [w,h] [h,w]
+/*
+ 60 50 -> 30 70
+ 60 70 / 70 50 -> 70 50
+ 하나씩 순회 하면서 뒤집을 경우 , 그대로 쓸 경우의 크기를 비교한다.
+ */
+//func solution(_ sizes:[[Int]]) -> Int {
+//    var width = 0
+//    var height = 0
+//    for i in sizes {
+//        width = max(i.max()!,width)
+//        height = max(i.min()!,height)
+//    }
+//    return width * height
+//}
+// 시저암호
+// 65~ 90 : a~z / 97~ 122 = A~Z
+//func solution(_ s:String, _ n:Int) -> String {
+//    return s.utf8.map {
+//        var code = Int($0)
+//        switch code {
+//        case 65...90:
+//            return (code + n - 65) % 26 + 65
+//        case 97...122:
+//            return (code + n - 97) % 26 + 97
+//        default:
+//            break
+//        }
+//    }
+//    
+//}
+// 가장 가까운 같은 글자
+// 가장 최근에 있는 것의 위치를 파악해야함 remove ?
+//func solution(_ s:String) -> [Int] {
+//    var a:[Character] = []
+//    var re:[Int] = []
+//    for (i,element) in Array(s).enumerated() { // b
+//        if let b = a.firstIndex(of: element) { // 있었으면
+//            re.append(i - b)
+//            a[b] = "0"
+//        } else {
+//            re.append(-1)
+//        }
+//        a.append(element)
+//    }
+//    return re
+//}
+//
+//print(solution("foobar"))
+
+// 숫자 문자열과 영단어
+//func solution(_ s:String) -> Int {
+//    let dic: [String: Int] = ["zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9] // dic
+//    var re = ""
+//    var descr = ""
+//    for i in s {
+//        if let a = Int(String(i)) {
+//            // 정수가 표현이 되면
+//            re.append(String(a))
+//        } else {
+//            descr += String(i)
+//            if let d = dic[descr] {
+//                re.append(String(d))
+//                descr = ""
+//            }
+//        }
+//    }
+//    
+//    return Int(re)!
+//}
+//print(solution("2three45sixseven"))
+
+// 두 개 뽑아서 더하기
+// 1 2 3 4 -> 2 1 3 4 1
+
+//func solution(_ numbers:[Int]) -> [Int] {
+//    var re:Set<Int> = []
+//    for (index1,element1) in numbers.enumerated() {
+//        for (index2,element2) in numbers.enumerated() {
+//            if index1 != index2 {
+//                re.insert(element1 + element2)
+//            }
+//        }
+//    }
+//    return Array(re).sorted()
+//}
+
+//func sizeConverter(_ cm: Double) -> (mm: Double, m: Double, km: Double, inch: Double, ft: Double) {
+//    let mm = cm * 0.1
+//    let m = cm * 0.01
+//    let km = cm * 0.00001
+//    let inch = cm * 0.393701
+//    let ft = cm * 0.0328084
+//    return (mm, m, km, inch, ft)
+//    // tuple 2쌍일때만
+//    // [Int]
+//}
+//
+//let cmTuple = sizeConverter(1)
+//
+//print(cmTuple.mm)
+//print(cmTuple.m)
+//print(cmTuple.km)
+//print(cmTuple.inch)
+//print(cmTuple.ft)
+//
+// k 번째수 
+//func solution(_ array:[Int], _ commands:[[Int]]) -> [Int] {
+//    return commands.map { arr in
+//        let start = arr[0] - 1
+//        let end = arr[1] - 1
+//        let cnt = arr[2] - 1
+//        return array[start...end].sorted()[cnt]
+//    }.map{$0}
+//}
