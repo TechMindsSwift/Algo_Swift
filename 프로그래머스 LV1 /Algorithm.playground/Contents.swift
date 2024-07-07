@@ -384,7 +384,7 @@ func solution(_ s:String) -> Bool {
 //print(cmTuple.inch)
 //print(cmTuple.ft)
 //
-// k 번째수 
+// k 번째수
 //func solution(_ array:[Int], _ commands:[[Int]]) -> [Int] {
 //    return commands.map { arr in
 //        let start = arr[0] - 1
@@ -393,3 +393,6 @@ func solution(_ s:String) -> Bool {
 //        return array[start...end].sorted()[cnt]
 //    }.map{$0}
 //}
+
+
+//푸드 파이터 대회 
