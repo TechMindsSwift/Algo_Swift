@@ -430,27 +430,43 @@ func solution(_ s:String) -> Bool {
 // 배열들을 이진수로 바꾼다 ?
 // 둘이 합친다
 // 1은 #으로 바꾼다.
-func solution(_ n:Int, _ arr1:[Int], _ arr2:[Int]) -> [String] {
-    var answer: [String] = []
-     // 처음 두개를 만들어줌 00000
-    let str1 = String(repeating: "0", count: n)
-    let str2 = String(repeating: "0", count: n)
-    for (a,b) in zip(arr1, arr2) {
-        
+//func solution(_ n:Int, _ arr1:[Int], _ arr2:[Int]) -> [String] {
+//    var answer: [String] = []
+//     // 처음 두개를 만들어줌 00000
+//    let str1 = String(repeating: "0", count: n)
+//    let str2 = String(repeating: "0", count: n)
+//    for (a,b) in zip(arr1, arr2) {
+//        
+//
+//        let c1 = String(a, radix: 2) // 1001
+//        let c2 = String(b, radix: 2) // 11110
+//        let d1 = Array(str1)[0..<n - c1.count] + c1 // 10001
+//        let d2 = Array(str2)[0..<n - c2.count] + c2 // 11110
+//        var re = ""
+//        for (i,j) in zip(d1,d2) {
+//            if i == "1" || j == "1" {
+//                re += "#"
+//            } else {
+//                re += " "
+//            }
+//        }
+//        answer.append(re)
+//    }
+//    return answer
+//}
 
-        let c1 = String(a, radix: 2) // 1001
-        let c2 = String(b, radix: 2) // 11110
-        let d1 = Array(str1)[0..<n - c1.count] + c1 // 10001
-        let d2 = Array(str2)[0..<n - c2.count] + c2 // 11110
-        var re = ""
-        for (i,j) in zip(d1,d2) {
-            if i == "1" || j == "1" {
-                re += "#"
-            } else {
-                re += " "
-            }
-        }
-        answer.append(re)
+// 콜라문제
+// a병에 b병을 주는데 n개가 있다.
+
+// n개가 있다.
+// n/a 만큼의 병을 받았다.
+// 남은건 n/a + n % a 개의 병이다. 3 1 20
+func solution(_ a:Int, _ b:Int, _ n:Int) -> Int {
+    var n = n
+    var sum = 0
+    while(n > 1) { // 20 8 4
+        sum += (n/a) * b // 6 2 1
+        n = (n/a) * b + n%a // 6 + 2 , 2 + 2 , 1 + 1
     }
-    return answer
+    return sum
 }
