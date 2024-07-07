@@ -415,13 +415,42 @@ func solution(_ s:String) -> Bool {
  2. n 번째 인덱스만 뽑아서 배열을 만든다. filter -> dic ??
  3.
  */
-func solution(_ strings:[String], _ n:Int) -> [String] {
-    
-    return strings.sorted {
-        let index1 = $0.index($0.startIndex, offsetBy: n)
-        let index2 = $1.index($1.startIndex, offsetBy: n)
+//func solution(_ strings:[String], _ n:Int) -> [String] {
+//    
+//    return strings.sorted {
+//        let index1 = $0.index($0.startIndex, offsetBy: n)
+//        let index2 = $1.index($1.startIndex, offsetBy: n)
+//        
+//        return $0[index1] == $1[index2] ? $0 < $1 : $0[index1] < $1[index2]
+//        
+//    }
+//}
+
+//1차 비밀지도
+// 배열들을 이진수로 바꾼다 ?
+// 둘이 합친다
+// 1은 #으로 바꾼다.
+func solution(_ n:Int, _ arr1:[Int], _ arr2:[Int]) -> [String] {
+    var answer: [String] = []
+     // 처음 두개를 만들어줌 00000
+    let str1 = String(repeating: "0", count: n)
+    let str2 = String(repeating: "0", count: n)
+    for (a,b) in zip(arr1, arr2) {
         
-        return $0[index1] == $1[index2] ? $0 < $1 : $0[index1] < $1[index2]
-        
+
+        let c1 = String(a, radix: 2) // 1001
+        let c2 = String(b, radix: 2) // 11110
+        let d1 = Array(str1)[0..<n - c1.count] + c1 // 10001
+        let d2 = Array(str2)[0..<n - c2.count] + c2 // 11110
+        var re = ""
+        for (i,j) in zip(d1,d2) {
+            if i == "1" || j == "1" {
+                re += "#"
+            } else {
+                re += " "
+            }
+        }
+        answer.append(re)
     }
+    return answer
 }
