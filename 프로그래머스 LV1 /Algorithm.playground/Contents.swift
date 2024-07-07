@@ -472,13 +472,31 @@ func solution(_ s:String) -> Bool {
 //}
 // 추억점수
 // name, yearing 를 통해 딕셔너리 생성
-func solution(_ name:[String], _ yearning:[Int], _ photo:[[String]]) -> [Int] {
-    let point = zip(name,yearning).reduce(into: [String:Int]()) { (dict,pair) in
-        dict[pair.0] = pair.1
-    }
-    return photo.map { // ["may", "kein", "kain", "radi"]
-        $0.reduce(0){ result, str in
-            result + (point[str] ?? 0)
+//func solution(_ name:[String], _ yearning:[Int], _ photo:[[String]]) -> [Int] {
+//    let point = zip(name,yearning).reduce(into: [String:Int]()) { (dict,pair) in
+//        dict[pair.0] = pair.1
+//    }
+//    return photo.map { // ["may", "kein", "kain", "radi"]
+//        $0.reduce(0){ result, str in
+//            result + (point[str] ?? 0)
+//        }
+//    }
+//}
+
+// 카드뭉치
+func solution(_ cards1:[String], _ cards2:[String], _ goal:[String]) -> String {
+    var check: Bool = true
+    var cards1 = cards1
+    var cards2 = cards2
+    for i in goal {
+        if i == cards1.first {
+            cards1.removeFirst()
+        } else if i == cards2.first {
+            cards2.removeFirst()
+        } else {
+            a = false
         }
     }
+    
+    return a ? "Yes" : "No"
 }
