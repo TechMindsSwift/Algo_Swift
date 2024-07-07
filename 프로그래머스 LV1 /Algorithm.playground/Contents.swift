@@ -395,4 +395,18 @@ func solution(_ s:String) -> Bool {
 //}
 
 
-//푸드 파이터 대회 
+//푸드 파이터 대회
+//func solution(_ food:[Int]) -> String {
+//    var result = ""
+//    for (index,element) in food.enumerated() {
+//        if index == 0 {
+//            continue
+//        }
+//        result += String(repeating: "\(index + 1)", count: element / 2)
+//    }
+//    return result + "0" + result.reversed()
+//}
+//solution([1,3,4,6])
+
+
+// 문자열 내맘대로 정렬하기 
