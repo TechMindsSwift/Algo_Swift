@@ -409,4 +409,19 @@ func solution(_ s:String) -> Bool {
 //solution([1,3,4,6])
 
 
-// 문자열 내맘대로 정렬하기 
+// 문자열 내맘대로 정렬하기
+/*
+ 1. 문자열을 검사한다.
+ 2. n 번째 인덱스만 뽑아서 배열을 만든다. filter -> dic ??
+ 3.
+ */
+func solution(_ strings:[String], _ n:Int) -> [String] {
+    
+    return strings.sorted {
+        let index1 = $0.index($0.startIndex, offsetBy: n)
+        let index2 = $1.index($1.startIndex, offsetBy: n)
+        
+        return $0[index1] == $1[index2] ? $0 < $1 : $0[index1] < $1[index2]
+        
+    }
+}
