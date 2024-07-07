@@ -460,13 +460,25 @@ func solution(_ s:String) -> Bool {
 
 // n개가 있다.
 // n/a 만큼의 병을 받았다.
-// 남은건 n/a + n % a 개의 병이다. 3 1 20
-func solution(_ a:Int, _ b:Int, _ n:Int) -> Int {
-    var n = n
-    var sum = 0
-    while(n > 1) { // 20 8 4
-        sum += (n/a) * b // 6 2 1
-        n = (n/a) * b + n%a // 6 + 2 , 2 + 2 , 1 + 1
+//// 남은건 n/a + n % a 개의 병이다. 3 1 20
+//func solution(_ a:Int, _ b:Int, _ n:Int) -> Int {
+//    var n = n
+//    var sum = 0
+//    while(n > 1) { // 20 8 4
+//        sum += (n/a) * b // 6 2 1
+//        n = (n/a) * b + n%a // 6 + 2 , 2 + 2 , 1 + 1
+//    }
+//    return sum
+//}
+// 추억점수
+// name, yearing 를 통해 딕셔너리 생성
+func solution(_ name:[String], _ yearning:[Int], _ photo:[[String]]) -> [Int] {
+    let point = zip(name,yearning).reduce(into: [String:Int]()) { (dict,pair) in
+        dict[pair.0] = pair.1
     }
-    return sum
+    return photo.map { // ["may", "kein", "kain", "radi"]
+        $0.reduce(0){ result, str in
+            result + (point[str] ?? 0)
+        }
+    }
 }
