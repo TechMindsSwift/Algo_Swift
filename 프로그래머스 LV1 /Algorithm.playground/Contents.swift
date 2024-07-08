@@ -1,5 +1,5 @@
 import Foundation
-
+import UIKit
 // 문자열 내 p와 y 의 개수
 /*
 func solution(_ s:String) -> Bool {
@@ -484,19 +484,47 @@ func solution(_ s:String) -> Bool {
 //}
 
 // 카드뭉치
-func solution(_ cards1:[String], _ cards2:[String], _ goal:[String]) -> String {
-    var check: Bool = true
-    var cards1 = cards1
-    var cards2 = cards2
-    for i in goal {
-        if i == cards1.first {
-            cards1.removeFirst()
-        } else if i == cards2.first {
-            cards2.removeFirst()
-        } else {
-            a = false
-        }
-    }
-    
-    return a ? "Yes" : "No"
-}
+//func solution(_ cards1:[String], _ cards2:[String], _ goal:[String]) -> String {
+//    var a: Bool = true
+//    var cards1 = cards1
+//    var cards2 = cards2
+//    for i in goal {
+//        if i == cards1.first {
+//            cards1.removeFirst()
+//        } else if i == cards2.first {
+//            cards2.removeFirst()
+//        } else {
+//            a = false
+//        }
+//    }
+//    
+//    return a ? "Yes" : "No"
+//}
+
+// 2016년
+// 1월 1일 = 금
+// 2월 1일 = 월
+// 3월 1일 = 화
+// 4 = 금, 5 = 일 , 6 = 수 , 7 = 금 , 8 = 월 , 9 = 목 , 10 = 토 , 11 = 화, 12 = 목
+
+//func solution(_ a:Int, _ b:Int) -> String {
+//    let day = ["FRI","SAT","SUN","MON","TUE","WED","THU"]
+//    var cnt = -1
+//    var days = (0...365).map{day[$0%7]} // 순서대로 넣음
+//    for i in 1...a {
+//        if (i == a) {
+//            cnt += b
+//            break
+//        }
+//        switch i {
+//        case 1,3,5,7,8,10,12:
+//            cnt += 31
+//        case 2:
+//            cnt += 29
+//        default:
+//            cnt += 30
+//        }
+//    }
+//    return days[cnt]
+//}
+//print(solution(1, 1))
