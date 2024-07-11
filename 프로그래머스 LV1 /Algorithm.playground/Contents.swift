@@ -567,24 +567,71 @@ func solution(_ s:String) -> Bool {
 // 1~number 배열에서 순서대로 약수의 개수를 구한다.
 // 약수의 개수가 공격력인데 limit 를 넘으면 안된다. 넘는다면 power 수를 더한다. 
 //
-func solution(_ number:Int, _ limit:Int, _ power:Int) -> Int {
-    return (1...number).map{ countDivisor($0)}.reduce(0){ result , num in
-        num > limit ? result + power : result + num
-    }
-}
+//func solution(_ number:Int, _ limit:Int, _ power:Int) -> Int {
+//    return (1...number).map{ countDivisor($0)}.reduce(0){ result , num in
+//        num > limit ? result + power : result + num
+//    }
+//}
+//
+//func countDivisor(_ num: Int) -> Int {
+//    let sqrtN = Int(sqrt(Double(num))) // 제곱근
+//    var cnt = 0
+//    for i in 1...sqrtN {
+//        if num.isMultiple(of: i) {
+//            cnt += 1
+//            if i != num / i {
+//                cnt += 1
+//            }
+//        }
+//    }
+//    return cnt
+//}
+//print(solution(10, 3, 2))
 
-func countDivisor(_ num: Int) -> Int {
-    let sqrtN = Int(sqrt(Double(num))) // 제곱근
-    var cnt = 0
-    for i in 1...sqrtN {
-        if num.isMultiple(of: i) {
-            cnt += 1
-            if i != num / i {
-                cnt += 1
-            }
-        }
-    }
-    return cnt
-}
-print(solution(10, 3, 2))
 
+// 소수 만들기
+// 숫자 3개를 더해서 만들수 있는 소수의 개수
+
+//func solution(_ nums:[Int]) -> Int{
+//    var answer = -1
+//    var ans: [Int] = []
+//    var sum = 0
+//    for a in nums.indices {
+//        for b in a + 1..<nums.count {
+//            for c in b + 1 ..< nums.count {
+//                ans.append((nums[a] + nums[b] + nums[c]))
+//            }
+//        }
+//    }
+//  //  print("Hello Swift")
+//    
+//    return isPrimeNum(ans)
+//}
+//func countDivisor(_ number: Int) -> Bool{
+//    let sqrtN = Int(sqrt(Double(number)))
+//    var cnt = 0
+//    for i in 1...sqrtN {
+//        if number.isMultiple(of: i) {
+//            cnt += 1
+//            if i != number / i {
+//                cnt += 1
+//            }
+//        }
+//        if cnt > 2 {
+//            return false
+//        }
+//    }
+//    return true
+//    
+//}
+//func isPrimeNum(_ nums: [Int]) -> Int {
+//     var cnt = 0
+//    for i in nums {
+//    
+//        if countDivisor(i) {
+//            cnt += 1
+//        }
+//        
+//    }
+//    return cnt
+//}
