@@ -534,31 +534,57 @@ func solution(_ s:String) -> Bool {
 // 2번 : 21232425
 // 3번 : 3311224455 반복해서 찍는다
 // 총 10000 문제 !
-import Foundation
+//import Foundation
+//
+//func solution(_ answers:[Int]) -> [Int] {
+//    // 1. answer 을 돈다.
+//    // 2. 1,2,3 번째 학생의 배열을 만든다.
+//    // 3. 1 1 6 1 11 1   student 의 인덱스는 (answer / stu.count) * stu.count  + answer % stu.count
+//    let student: [[Int]] = [[1,2,3,4,5], [2,1,2,3,2,4,2,5], [3,3,1,1,2,2,4,4,5,5]] // 정답 배열
+//    var ans:[Int] = []
+//    var compare = 0
+//    for (i,j) in student.enumerated() { // [1,2,3,4,5]
+//        var cnt = 0
+//        for (index, element) in answers.enumerated() {
+//            if element == j[index % j.count] {
+//                cnt += 1
+//            }
+//        }
+//        if cnt > compare {
+//            ans.removeAll()
+//            ans.append(i+1) // 컸다면 인덱스를 넣어준다.
+//            compare = cnt
+//        } else if cnt == compare {
+//            ans.append(i+1)
+//        }
+//    }
+//    
+//    return ans
+//}
+//print(solution([2,1,2,3,2,4,2,5]))
 
-func solution(_ answers:[Int]) -> [Int] {
-    // 1. answer 을 돈다.
-    // 2. 1,2,3 번째 학생의 배열을 만든다.
-    // 3. 1 1 6 1 11 1   student 의 인덱스는 (answer / stu.count) * stu.count  + answer % stu.count
-    let student: [[Int]] = [[1,2,3,4,5], [2,1,2,3,2,4,2,5], [3,3,1,1,2,2,4,4,5,5]] // 정답 배열
-    var ans:[Int] = []
-    var compare = 0
-    for (i,j) in student.enumerated() { // [1,2,3,4,5]
-        var cnt = 0
-        for (index, element) in answers.enumerated() {
-            if element == j[index % j.count] {
+// 기사단원의 무기
+// 1~number 배열에서 순서대로 약수의 개수를 구한다.
+// 약수의 개수가 공격력인데 limit 를 넘으면 안된다. 넘는다면 power 수를 더한다. 
+//
+func solution(_ number:Int, _ limit:Int, _ power:Int) -> Int {
+    return (1...number).map{ countDivisor($0)}.reduce(0){ result , num in
+        num > limit ? result + power : result + num
+    }
+}
+
+func countDivisor(_ num: Int) -> Int {
+    let sqrtN = Int(sqrt(Double(num))) // 제곱근
+    var cnt = 0
+    for i in 1...sqrtN {
+        if num.isMultiple(of: i) {
+            cnt += 1
+            if i != num / i {
                 cnt += 1
             }
         }
-        if cnt > compare {
-            ans.removeAll()
-            ans.append(i+1) // 컸다면 인덱스를 넣어준다.
-            compare = cnt
-        } else if cnt == compare {
-            ans.append(i+1)
-        }
     }
-    
-    return ans
+    return cnt
 }
-print(solution([2,1,2,3,2,4,2,5]))
+print(solution(10, 3, 2))
+
