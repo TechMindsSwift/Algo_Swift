@@ -5,21 +5,19 @@ import Foundation
 // 예를 들어 a = 3, b = 5인 경우, 3 + 4 + 5 = 12이므로 12를 리턴합니다.
 
 func solution(_ a:Int, _ b:Int) -> Int64 {
-    // 값을 저장할 temp 변수 선언
-    var temp: Int64 = 0
-    // min 값을 저장할 minA 변수 선언
-    var minA: Int64 = Int64(min(a,b))
-    // max 값을 저장할 maxA 변수 선언
-    var maxB: Int64 = Int64(max(a,b))
- 
-    // temp는 min부터 max 까지의 값을 모두 더한다
-    for index in minA...maxB {
-        temp += index
+    // min 값을 넣을 start 변수선언
+    let start = Int64(min(a, b))
+    // max 값을 넣을 end 변수선언
+    let end = Int64(max(a, b))
+    // 값을 모두 더할 sum 변수선언
+    var sum: Int64 = 0
+
+    // sum 변수에 모두 더하기
+    for number in start...end {
+        sum += number
     }
-    // 모두 더한 temp 값을 반환
-    return Int64(temp)
+    // sum을 리턴
+    return sum
+    
 }
 
-var sol: Int = 0
-sol = Int(solution(2, 5))
-print(sol)
