@@ -680,3 +680,17 @@ func solution(_ s:String) -> Bool {
 //    
 //}
 
+
+// 덧칠하기
+// 길이가 N 미터인 벽
+func solution(_ n:Int, _ m:Int, _ section:[Int]) -> Int {
+    var st = 0
+    var cnt = 0
+    for i in section {
+        if st < i {
+            st =  i + m - 1
+            cnt += 1
+        }
+    }
+    return cnt
+}
