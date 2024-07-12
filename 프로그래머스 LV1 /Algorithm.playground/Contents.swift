@@ -655,3 +655,28 @@ func solution(_ s:String) -> Bool {
 //    
 //}
 //print(solution(4, 3, [4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2]))
+
+// 소수찾기
+//func solution(_ n:Int) -> Int {
+//    return (2...n).filter{isPrimeNum($0)}.count
+//}
+//
+//func isPrimeNum(_ n: Int) -> Bool {
+//    let sqrtN = Int(sqrt(Double(n))) // 제곱근
+//    var cnt = 0
+//    for i in 1...sqrtN {
+//        if n.isMultiple(of: i) {
+//            cnt += 1
+//            if n / i != i {
+//                cnt += 1
+//            }
+//            if cnt > 2 {
+//                return false
+//            }
+//        }
+//        
+//    }
+//    return true
+//    
+//}
+
