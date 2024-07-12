@@ -635,3 +635,23 @@ func solution(_ s:String) -> Bool {
 //    }
 //    return cnt
 //}
+// 과일장수
+// 사과 점수, k = 3 m개만큼 담는다.
+// 가장 낮은 점수가 p 인경우 사과 한상자의 가격은 p*m
+// 얻을 수 있는 최대이익
+// 포장할 수 있는 경우의 수
+// 식 : (최저 사과 점수) x (한 상자에 담긴 사과 개수) x (상자의 개수)
+// [1, 2, 3, 1, 2, 3, 1] [4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2]
+
+// 1. score 를 내림차순으로 정렬한다. 3 3 2 2 1 1. 큰거부터 제거
+//func solution(_ k:Int, _ m:Int, _ score:[Int]) -> Int {
+//    var score = score.sorted(by: >)
+//    var sum = 0
+//    for i in stride(from: m - 1, to: score.count - (score.count % m), by: +m) {
+//        sum += score[i] * m
+//    }
+//    
+//    return sum
+//    
+//}
+//print(solution(4, 3, [4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2]))
