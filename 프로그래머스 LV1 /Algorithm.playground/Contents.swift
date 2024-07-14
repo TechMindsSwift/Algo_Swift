@@ -723,3 +723,31 @@ import UIKit
 //    
 //}
 
+// 옹알이2
+//  "aya", "ye", "woo", "ma"
+func solution(_ babbling:[String]) -> Int {
+    var cnt = 0
+    for i in babbling { 
+        var str = i
+        var preWord = ""
+        while(!str.isEmpty) {
+            if str.hasPrefix("aya") && preWord != "aya"{
+                str = String(str.dropFirst(3))
+                preWord = "aya"
+            } else if str.hasPrefix("ye") && preWord != "ye" {
+                str = String(str.dropFirst(2))
+                preWord = "ye"
+            } else if str.hasPrefix("woo") && preWord != "woo" {
+                str = String(str.dropFirst(3))
+                preWord = "woo"
+            } else if str.hasPrefix("ma") && preWord != "ma" {
+                str = String(str.dropFirst(2))
+                preWord = "ma"
+            } else {
+                break
+            }
+        }
+        cnt = str.isEmpty ? cnt + 1 : cnt
+    }
+    return cnt
+}
