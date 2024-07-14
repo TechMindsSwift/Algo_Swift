@@ -2,10 +2,10 @@ import Foundation
 import UIKit
 // 문자열 내 p와 y 의 개수
 /*
-func solution(_ s:String) -> Bool {
-    return s.filter {$0 == "p" || $0 == "P"}.count == s.filter {$0 == "y" || $0 == "Y"}.count ? true : false
-}
-*/
+ func solution(_ s:String) -> Bool {
+ return s.filter {$0 == "p" || $0 == "P"}.count == s.filter {$0 == "y" || $0 == "Y"}.count ? true : false
+ }
+ */
 
 // 자릿수 더하기
 
@@ -69,7 +69,7 @@ func solution(_ s:String) -> Bool {
 //}
 // 음양 더하기
 //func solution(_ absolutes:[Int], _ signs:[Bool]) -> Int {
-//   
+//
 //    return (0..<absolutes.count).map{ signs[$0] ? absolutes[$0] : absolutes[$0] * -1 }.reduce(0,+)
 //}
 
@@ -183,7 +183,7 @@ func solution(_ s:String) -> Bool {
 //    let re = Int64(money - (1...count).reduce(0) { (result, num) in
 //        result + (num * price)})
 //    return re > money ? re : 0
-//    
+//
 //}
 
 // 문자열 다루기
@@ -240,7 +240,7 @@ func solution(_ s:String) -> Bool {
 //        }
 //    }
 //    return cnt
-//    
+//
 //}
 
 // 이상한 문자 만들기
@@ -307,7 +307,7 @@ func solution(_ s:String) -> Bool {
 //            break
 //        }
 //    }
-//    
+//
 //}
 // 가장 가까운 같은 글자
 // 가장 최근에 있는 것의 위치를 파악해야함 remove ?
@@ -345,7 +345,7 @@ func solution(_ s:String) -> Bool {
 //            }
 //        }
 //    }
-//    
+//
 //    return Int(re)!
 //}
 //print(solution("2three45sixseven"))
@@ -416,13 +416,13 @@ func solution(_ s:String) -> Bool {
  3.
  */
 //func solution(_ strings:[String], _ n:Int) -> [String] {
-//    
+//
 //    return strings.sorted {
 //        let index1 = $0.index($0.startIndex, offsetBy: n)
 //        let index2 = $1.index($1.startIndex, offsetBy: n)
-//        
+//
 //        return $0[index1] == $1[index2] ? $0 < $1 : $0[index1] < $1[index2]
-//        
+//
 //    }
 //}
 
@@ -436,7 +436,7 @@ func solution(_ s:String) -> Bool {
 //    let str1 = String(repeating: "0", count: n)
 //    let str2 = String(repeating: "0", count: n)
 //    for (a,b) in zip(arr1, arr2) {
-//        
+//
 //
 //        let c1 = String(a, radix: 2) // 1001
 //        let c2 = String(b, radix: 2) // 11110
@@ -497,7 +497,7 @@ func solution(_ s:String) -> Bool {
 //            a = false
 //        }
 //    }
-//    
+//
 //    return a ? "Yes" : "No"
 //}
 
@@ -558,14 +558,14 @@ func solution(_ s:String) -> Bool {
 //            ans.append(i+1)
 //        }
 //    }
-//    
+//
 //    return ans
 //}
 //print(solution([2,1,2,3,2,4,2,5]))
 
 // 기사단원의 무기
 // 1~number 배열에서 순서대로 약수의 개수를 구한다.
-// 약수의 개수가 공격력인데 limit 를 넘으면 안된다. 넘는다면 power 수를 더한다. 
+// 약수의 개수가 공격력인데 limit 를 넘으면 안된다. 넘는다면 power 수를 더한다.
 //
 //func solution(_ number:Int, _ limit:Int, _ power:Int) -> Int {
 //    return (1...number).map{ countDivisor($0)}.reduce(0){ result , num in
@@ -604,7 +604,7 @@ func solution(_ s:String) -> Bool {
 //        }
 //    }
 //  //  print("Hello Swift")
-//    
+//
 //    return isPrimeNum(ans)
 //}
 //func countDivisor(_ number: Int) -> Bool{
@@ -622,16 +622,16 @@ func solution(_ s:String) -> Bool {
 //        }
 //    }
 //    return true
-//    
+//
 //}
 //func isPrimeNum(_ nums: [Int]) -> Int {
 //     var cnt = 0
 //    for i in nums {
-//    
+//
 //        if countDivisor(i) {
 //            cnt += 1
 //        }
-//        
+//
 //    }
 //    return cnt
 //}
@@ -650,9 +650,9 @@ func solution(_ s:String) -> Bool {
 //    for i in stride(from: m - 1, to: score.count - (score.count % m), by: +m) {
 //        sum += score[i] * m
 //    }
-//    
+//
 //    return sum
-//    
+//
 //}
 //print(solution(4, 3, [4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2]))
 
@@ -674,23 +674,52 @@ func solution(_ s:String) -> Bool {
 //                return false
 //            }
 //        }
-//        
+//
 //    }
 //    return true
-//    
+//
 //}
 
 
 // 덧칠하기
-// 길이가 N 미터인 벽
-func solution(_ n:Int, _ m:Int, _ section:[Int]) -> Int {
-    var st = 0
-    var cnt = 0
-    for i in section {
-        if st < i {
-            st =  i + m - 1
-            cnt += 1
-        }
-    }
-    return cnt
-}
+//// 길이가 N 미터인 벽
+//func solution(_ n:Int, _ m:Int, _ section:[Int]) -> Int {
+//    var st = 0
+//    var cnt = 0
+//    for i in section {
+//        if st < i {
+//            st =  i + m - 1
+//            cnt += 1
+//        }
+//    }
+//    return cnt
+//}
+
+//실패율
+
+//func solution(_ N:Int, _ stages:[Int]) -> [Int] {
+//    var suc = (0...N+1).map{_ in 0.0} // 성공 생성
+//    var trial = (0...N+1).map {_ in 0.0} //  시도 생성
+//    
+//    var dict = [Int: Double]()
+//    for stage in stages {
+//        for j in 1...stage {
+//            trial[j] += 1
+//            suc[j] += 1
+//        }
+//        if stage != N+1 {
+//            suc[stage] -= 1
+//        }
+//    }
+//    for i in 1...N {
+//        dict[i] = trial[i] == 0.0 ? 0.0 : 1.0 - Double(suc[i] / trial[i])
+//    }
+//    return dict.sorted{
+//        if $0.value == $1.value {
+//            return $0.key < $1.key
+//        }
+//        return $0.value < $1.value
+//    }.map{$0.key}
+//    
+//}
+
