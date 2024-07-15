@@ -814,3 +814,29 @@ import UIKit
 //)
 //print(solution([0, 0, 0, 0, 0, 0]        ,[38, 19, 20, 40, 15, 25]        )
 //)
+// 문자열 나누기
+func solution(_ s:String) -> Int {
+    var s = s
+    var x = s.first ?? " "
+    var cnt = 0
+    var x_cnt = 0
+    var re = 0
+    for i in s {
+        if x == " " {
+            x = i
+        }
+        if x == i {
+            cnt += 1
+        } else {
+            x_cnt += 1
+        }
+        if cnt == x_cnt {
+            x = " "
+            re += 1
+            cnt = 0
+            x_cnt = 0
+        }
+    }
+    re = cnt == x_cnt ? re : re + 1
+    return re
+}
