@@ -856,23 +856,57 @@ import UIKit
 //solution("aukks", "wbqd", 5) // 97 ~ 122
 
 // 대충 만든 자판
-func solution(_ keymap:[String], _ targets:[String]) -> [Int] {
-    var re:[Int] = []
-    for i in targets {
-        var sum = 0
-        for j in i {
-            var a_index = 1000
-            for a in keymap {
-                if let index = a.firstIndex(of: j) {
-                    a_index = min(a_index, a.distance(from: a.startIndex, to: index) + 1)
-                }
-            }
-            sum += a_index
+//func solution(_ keymap:[String], _ targets:[String]) -> [Int] {
+//    var re:[Int] = []
+//    for i in targets {
+//        var sum = 0
+//        for j in i {
+//            var a_index = 1000
+//            for a in keymap {
+//                if let index = a.firstIndex(of: j) {
+//                    a_index = min(a_index, a.distance(from: a.startIndex, to: index) + 1)
+//                }
+//            }
+//            sum += a_index
+//        }
+//        sum < 1000 ? re.append(sum) : re.append(-1)
+//    }
+//    return re
+//}
+//print(solution(["ABACD", "BCEFD"], ["ABCD","AABB"]))
+//print(solution(["AA"], ["B"]))
+//print(solution(["AGZ", "BSSS"], ["ASA","BGZ"]))
+
+// 체육복
+// 여벌 체육복이 있는 학생이 빌려준다. 번호는 체격순으로 매겨짐
+// 바로 앞번호의 학생이나 뒷번호의 학생에게만 빌려줄수 있다.
+// 4는 3이나 5한테만 ㄱㄴ
+func solution(_ n:Int, _ lost:[Int], _ reserve:[Int]) -> Int {
+    
+    var sum = 0
+    // 본인이 잃어버려서 자기걸 갖게되는 사람 수
+    var selfLost = Set(lost).intersection(reserve)
+    var reserve = Array(Set(reserve).subtracting(selfLost)).sorted() // 여분에서 제외
+    var lost = Array(Set(lost).subtracting(selfLost)).sorted() // 잃어버린 명단 제외
+    
+    for i in lost{ // 잃어버린 애들 하나씩 체크
+        if let a = reserve.firstIndex(of: i - 1) {
+            reserve.remove(at: a)
+            lost.removeFirst()
         }
-        sum < 1000 ? re.append(sum) : re.append(-1)
+        else if let a = reserve.firstIndex(of: i) {
+            reserve.remove(at: a)
+            lost.removeFirst()
+        }
+        else if let a = reserve.firstIndex(of: i + 1) {
+            reserve.remove(at: a)
+            lost.removeFirst()
+        }
     }
-    return re
+    return n - lost.count
 }
-print(solution(["ABACD", "BCEFD"], ["ABCD","AABB"]))
-print(solution(["AA"], ["B"]))
-print(solution(["AGZ", "BSSS"], ["ASA","BGZ"]))
+// 분실한 애는 자기껄 줄 수 없다
+// 여분을 가져온애가 도난 당할 수 있다.
+print(solution(5, [2, 4], [1, 3, 5]))
+//print(solution(3, [1,3], [2]))
+
