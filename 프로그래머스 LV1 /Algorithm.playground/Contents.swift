@@ -725,29 +725,70 @@ import UIKit
 
 // 옹알이2
 //  "aya", "ye", "woo", "ma"
-func solution(_ babbling:[String]) -> Int {
-    var cnt = 0
-    for i in babbling { 
-        var str = i
-        var preWord = ""
-        while(!str.isEmpty) {
-            if str.hasPrefix("aya") && preWord != "aya"{
-                str = String(str.dropFirst(3))
-                preWord = "aya"
-            } else if str.hasPrefix("ye") && preWord != "ye" {
-                str = String(str.dropFirst(2))
-                preWord = "ye"
-            } else if str.hasPrefix("woo") && preWord != "woo" {
-                str = String(str.dropFirst(3))
-                preWord = "woo"
-            } else if str.hasPrefix("ma") && preWord != "ma" {
-                str = String(str.dropFirst(2))
-                preWord = "ma"
-            } else {
-                break
-            }
+//func solution(_ babbling:[String]) -> Int {
+//    var cnt = 0
+//    for i in babbling { 
+//        var str = i
+//        var preWord = ""
+//        while(!str.isEmpty) {
+//            if str.hasPrefix("aya") && preWord != "aya"{
+//                str = String(str.dropFirst(3))
+//                preWord = "aya"
+//            } else if str.hasPrefix("ye") && preWord != "ye" {
+//                str = String(str.dropFirst(2))
+//                preWord = "ye"
+//            } else if str.hasPrefix("woo") && preWord != "woo" {
+//                str = String(str.dropFirst(3))
+//                preWord = "woo"
+//            } else if str.hasPrefix("ma") && preWord != "ma" {
+//                str = String(str.dropFirst(2))
+//                preWord = "ma"
+//            } else {
+//                break
+//            }
+//        }
+//        cnt = str.isEmpty ? cnt + 1 : cnt
+//    }
+//    return cnt
+//}
+// 다트게임
+func solution(_ dartResult:String) -> Int {
+    var num:[Int] = []
+    for (index,element) in dartResult.enumerated() {
+        if num.isEmpty {
+            num.append(Int(String(element))!)
+            continue
         }
-        cnt = str.isEmpty ? cnt + 1 : cnt
+        let last = num.count - 1
+        switch element {
+        case "S":
+            continue
+        case "D":
+            num[last] *= num[last]
+        case "T":
+            num[last] = num[last] * num[last] * num[last]
+        case "*":
+            num[last] *= 2
+            if last > 0 {
+                num[last - 1] *= 2
+            }
+        case "#":
+            num[last] *= -1
+        case "0":
+            
+            if num[last] == 1 {
+                num[last] = 10
+            } else {
+                num.append(0)
+            }
+        case "1","2","3","4","5","6","7","8","9":
+            num.append(Int(String(element))!)
+        default:
+            break
+        }
+
     }
-    return cnt
+    print(num)
+    return num.reduce(0,+)
 }
+print(solution("1S2D*3T"))
