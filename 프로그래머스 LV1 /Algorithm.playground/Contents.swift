@@ -752,43 +752,65 @@ import UIKit
 //    return cnt
 //}
 // 다트게임
-func solution(_ dartResult:String) -> Int {
-    var num:[Int] = []
-    for (index,element) in dartResult.enumerated() {
-        if num.isEmpty {
-            num.append(Int(String(element))!)
-            continue
-        }
-        let last = num.count - 1
-        switch element {
-        case "S":
-            continue
-        case "D":
-            num[last] *= num[last]
-        case "T":
-            num[last] = num[last] * num[last] * num[last]
-        case "*":
-            num[last] *= 2
-            if last > 0 {
-                num[last - 1] *= 2
-            }
-        case "#":
-            num[last] *= -1
-        case "0":
-            
-            if num[last] == 1 {
-                num[last] = 10
-            } else {
-                num.append(0)
-            }
-        case "1","2","3","4","5","6","7","8","9":
-            num.append(Int(String(element))!)
-        default:
-            break
-        }
+//func solution(_ dartResult:String) -> Int {
+//    var num:[Int] = []
+//    for (index,element) in dartResult.enumerated() {
+//        if num.isEmpty {
+//            num.append(Int(String(element))!)
+//            continue
+//        }
+//        let last = num.count - 1
+//        switch element {
+//        case "S":
+//            continue
+//        case "D":
+//            num[last] *= num[last]
+//        case "T":
+//            num[last] = num[last] * num[last] * num[last]
+//        case "*":
+//            num[last] *= 2
+//            if last > 0 {
+//                num[last - 1] *= 2
+//            }
+//        case "#":
+//            num[last] *= -1
+//        case "0":
+//            
+//            if num[last] == 1 {
+//                num[last] = 10
+//            } else {
+//                num.append(0)
+//            }
+//        case "1","2","3","4","5","6","7","8","9":
+//            num.append(Int(String(element))!)
+//        default:
+//            break
+//        }
+//
+//    }
+//    print(num)
+//    return num.reduce(0,+)
+//}
+//print(solution("1S2D*3T"))
 
-    }
-    print(num)
-    return num.reduce(0,+)
-}
-print(solution("1S2D*3T"))
+// 로또의 최고순위와 최저 순위
+//func solution(_ lottos:[Int], _ win_nums:[Int]) -> [Int] {
+//    var ansScore = Set(lottos).intersection(Set(win_nums)).count
+//    var suc = [6:1 , 5:2 , 4:3 , 3:4, 2:5, 1:6, 0:6]
+//    var zero = lottos.reduce(0) { result , num in
+//       return num == 0 ? result + 1 : result
+//    }
+//    var high = ansScore + zero
+//    var low = ansScore
+//    // 1등 6개
+//    
+//   
+//    
+//    return [suc[high,default: 0],suc[low,default: 0]]
+//}
+//print(solution([45, 4, 35, 20, 3, 9]    ,[20, 9, 3, 45, 4, 35]    )
+//)
+//print(solution([44, 1, 0, 0, 31, 25]    ,[31, 10, 45, 1, 6, 19]    )
+//)
+//print(solution([0, 0, 0, 0, 0, 0]        ,[38, 19, 20, 40, 15, 25]        )
+//)
