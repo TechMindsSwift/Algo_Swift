@@ -815,28 +815,64 @@ import UIKit
 //print(solution([0, 0, 0, 0, 0, 0]        ,[38, 19, 20, 40, 15, 25]        )
 //)
 // 문자열 나누기
-func solution(_ s:String) -> Int {
-    var s = s
-    var x = s.first ?? " "
-    var cnt = 0
-    var x_cnt = 0
-    var re = 0
-    for i in s {
-        if x == " " {
-            x = i
+//func solution(_ s:String) -> Int {
+//    var s = s
+//    var x = s.first ?? " "
+//    var cnt = 0
+//    var x_cnt = 0
+//    var re = 0
+//    for i in s {
+//        if x == " " {
+//            x = i
+//        }
+//        if x == i {
+//            cnt += 1
+//        } else {
+//            x_cnt += 1
+//        }
+//        if cnt == x_cnt {
+//            x = " "
+//            re += 1
+//            cnt = 0
+//            x_cnt = 0
+//        }
+//    }
+//    re = cnt == x_cnt ? re : re + 1
+//    return re
+//}
+//func solution(_ s:String, _ skip:String, _ index:Int) -> String {
+//    var str = s.utf8.map{ Int($0)}
+//    var skip = skip.utf8.map { Int($0)}
+//    var aa = (97...122).filter{!skip.contains($0)}
+//    var re = ""
+//    for i in str {
+//        if let ix = aa.firstIndex(of: i){
+//            re += String(UnicodeScalar(aa[(ix + index) % aa.count ])!)
+//        }
+//    }
+//    return re
+//}
+//
+//solution("aukks", "wbqd", 5) // 97 ~ 122
+
+// 대충 만든 자판
+func solution(_ keymap:[String], _ targets:[String]) -> [Int] {
+    var re:[Int] = []
+    for i in targets {
+        var sum = 0
+        for j in i {
+            var a_index = 1000
+            for a in keymap {
+                if let index = a.firstIndex(of: j) {
+                    a_index = min(a_index, a.distance(from: a.startIndex, to: index) + 1)
+                }
+            }
+            sum += a_index
         }
-        if x == i {
-            cnt += 1
-        } else {
-            x_cnt += 1
-        }
-        if cnt == x_cnt {
-            x = " "
-            re += 1
-            cnt = 0
-            x_cnt = 0
-        }
+        sum < 1000 ? re.append(sum) : re.append(-1)
     }
-    re = cnt == x_cnt ? re : re + 1
     return re
 }
+print(solution(["ABACD", "BCEFD"], ["ABCD","AABB"]))
+print(solution(["AA"], ["B"]))
+print(solution(["AGZ", "BSSS"], ["ASA","BGZ"]))
