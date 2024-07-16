@@ -881,32 +881,59 @@ import UIKit
 // 여벌 체육복이 있는 학생이 빌려준다. 번호는 체격순으로 매겨짐
 // 바로 앞번호의 학생이나 뒷번호의 학생에게만 빌려줄수 있다.
 // 4는 3이나 5한테만 ㄱㄴ
-func solution(_ n:Int, _ lost:[Int], _ reserve:[Int]) -> Int {
-    
-    var sum = 0
-    // 본인이 잃어버려서 자기걸 갖게되는 사람 수
-    var selfLost = Set(lost).intersection(reserve)
-    var reserve = Array(Set(reserve).subtracting(selfLost)).sorted() // 여분에서 제외
-    var lost = Array(Set(lost).subtracting(selfLost)).sorted() // 잃어버린 명단 제외
-    
-    for i in lost{ // 잃어버린 애들 하나씩 체크
-        if let a = reserve.firstIndex(of: i - 1) {
-            reserve.remove(at: a)
-            lost.removeFirst()
-        }
-        else if let a = reserve.firstIndex(of: i) {
-            reserve.remove(at: a)
-            lost.removeFirst()
-        }
-        else if let a = reserve.firstIndex(of: i + 1) {
-            reserve.remove(at: a)
-            lost.removeFirst()
+//func solution(_ n:Int, _ lost:[Int], _ reserve:[Int]) -> Int {
+//    
+//    var sum = 0
+//    // 본인이 잃어버려서 자기걸 갖게되는 사람 수
+//    var selfLost = Set(lost).intersection(reserve)
+//    var reserve = Array(Set(reserve).subtracting(selfLost)).sorted() // 여분에서 제외
+//    var lost = Array(Set(lost).subtracting(selfLost)).sorted() // 잃어버린 명단 제외
+//    
+//    for i in lost{ // 잃어버린 애들 하나씩 체크
+//        if let a = reserve.firstIndex(of: i - 1) {
+//            reserve.remove(at: a)
+//            lost.removeFirst()
+//        }
+//        else if let a = reserve.firstIndex(of: i) {
+//            reserve.remove(at: a)
+//            lost.removeFirst()
+//        }
+//        else if let a = reserve.firstIndex(of: i + 1) {
+//            reserve.remove(at: a)
+//            lost.removeFirst()
+//        }
+//    }
+//    return n - lost.count
+//}
+//// 분실한 애는 자기껄 줄 수 없다
+//// 여분을 가져온애가 도난 당할 수 있다.
+//print(solution(5, [2, 4], [1, 3, 5]))
+//print(solution(3, [1,3], [2]))
+
+// 숫자 짝꿍
+func solution(_ X:String, _ Y:String) -> String {
+    var x = (0...9).map{_ in 0}
+    var y = (0...9).map{_ in 0}
+
+    var ans = ""
+    for i in X {
+        if let index = Int("\(i)"){
+            x[index] += 1
         }
     }
-    return n - lost.count
+    for i in Y {
+        if let index = Int("\(i)"){
+            y[index] += 1
+        }
+    }
+    for i in stride(from: 9, to: -1, by: -1) {
+        if min(x[i],y[i]) > 0 { // 공통된게 없으면
+            let st = String(repeating: "\(i)", count: min(x[i],y[i]))
+            ans += st
+        }
+    }
+    ans = ans.isEmpty ? "-1" : ans
+  
+    return Set(ans) == ["0"] ? "0" : ans
 }
-// 분실한 애는 자기껄 줄 수 없다
-// 여분을 가져온애가 도난 당할 수 있다.
-print(solution(5, [2, 4], [1, 3, 5]))
-//print(solution(3, [1,3], [2]))
 
