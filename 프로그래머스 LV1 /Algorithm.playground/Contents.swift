@@ -911,29 +911,65 @@ import UIKit
 //print(solution(3, [1,3], [2]))
 
 // 숫자 짝꿍
-func solution(_ X:String, _ Y:String) -> String {
-    var x = (0...9).map{_ in 0}
-    var y = (0...9).map{_ in 0}
+//func solution(_ X:String, _ Y:String) -> String {
+//    var x = (0...9).map{_ in 0}
+//    var y = (0...9).map{_ in 0}
+//
+//    var ans = ""
+//    for i in X {
+//        if let index = Int("\(i)"){
+//            x[index] += 1
+//        }
+//    }
+//    for i in Y {
+//        if let index = Int("\(i)"){
+//            y[index] += 1
+//        }
+//    }
+//    for i in stride(from: 9, to: -1, by: -1) {
+//        if min(x[i],y[i]) > 0 { // 공통된게 없으면
+//            let st = String(repeating: "\(i)", count: min(x[i],y[i]))
+//            ans += st
+//        }
+//    }
+//    ans = ans.isEmpty ? "-1" : ans
+//  
+//    return Set(ans) == ["0"] ? "0" : ans
+//}
+// 스택 큐
+//struct Stack<T> { // LIFO
+//    private var storage: [T] = []
+//    mutating func push(_ element: T) {
+//        storage.append(element)
+//    }
+//    
+//    mutating func pop() -> T? {
+//        return storage.popLast()
+//    }
+//    func peek() -> T? {
+//        return storage.last
+//    }
+//    
+//    var isEmpty: Bool {
+//        return storage.isEmpty
+//    }
+//}
+//// 스택 / 큐.
+//func solution(_ s:String) -> Bool
+//{
+//    var stack = Stack<Character>()
+//    for i in s {
+//        if i == "(" {
+//            stack.push("(")
+//        } else {
+//            if stack.peek() == "(" {
+//                stack.pop()
+//            } else {
+//                stack.push(")")
+//            }
+//        }
+//    }
+//    return stack.isEmpty ? true : false
+//}
 
-    var ans = ""
-    for i in X {
-        if let index = Int("\(i)"){
-            x[index] += 1
-        }
-    }
-    for i in Y {
-        if let index = Int("\(i)"){
-            y[index] += 1
-        }
-    }
-    for i in stride(from: 9, to: -1, by: -1) {
-        if min(x[i],y[i]) > 0 { // 공통된게 없으면
-            let st = String(repeating: "\(i)", count: min(x[i],y[i]))
-            ans += st
-        }
-    }
-    ans = ans.isEmpty ? "-1" : ans
-  
-    return Set(ans) == ["0"] ? "0" : ans
-}
 
