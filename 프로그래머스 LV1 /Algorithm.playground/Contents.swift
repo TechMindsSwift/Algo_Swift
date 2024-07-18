@@ -1009,3 +1009,25 @@ import UIKit
 //    }
 //    return ans
 //}
+
+// 이진변환 반복하기
+// 0을 제거한 갯수, 반복한 수
+func solution(_ s:String) -> [Int] {
+    var s = s
+    var cnt = 0
+    var cnt_zero = 0
+    // 110010101001 -> 111111
+    while s.count > 1 { // 부등호로 하는게 나음
+        cnt += 1
+        var convert_s = s.filter{ $0 != "0"}.count // 6
+        // 원래 스트링 = s
+        cnt_zero += s.count - convert_s // 0의 갯수
+        // 일반 정수를 이진수로 변환해야함
+        var convert_s2 = String(convert_s, radix: 2) //110
+        s = convert_s2 // 110으로 다시 초기화
+    }
+    
+    
+    return [cnt, cnt_zero]
+}
+print(solution("1111111"))
