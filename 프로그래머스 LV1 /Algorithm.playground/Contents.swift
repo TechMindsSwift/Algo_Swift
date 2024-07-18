@@ -972,4 +972,40 @@ import UIKit
 //    return stack.isEmpty ? true : false
 //}
 
+//for i in 1...10 {
+//    print(i)
+//}
+// a...b  =  a<= i <= b
+// a..<b => b가 포함이 안됨
 
+//print(stride(from: 1, to: 10, by: 2).map{$0})
+
+//var a:[[Int]] = []
+//
+//func solution(_ num: [Int], _ n: Int) -> [[Int]] {
+//    var a = num
+//    var re:[[Int]] = Array(repeating: Array(repeating: 0, count: n), count: num.count / n)
+//
+//    var index = 0
+//    for i in 0..<(num.count / n) {
+//        for j in 0..<n {
+//            re[i][j] = a[index]
+//            index += 1
+//        }
+//    }
+//    
+//    return re
+//}
+//print(solution([1,2,3,4,5,6,7,8], 2))
+// 최솟값 만들기
+
+//func solution(_ A:[Int], _ B:[Int]) -> Int
+//{
+//    var (a,b) = (A,B)
+//    var re = zip(a.sorted(),b.sorted(by: >)).map{$0 * $1}
+//    var ans = 0
+//    for i in re {
+//        ans += i
+//    }
+//    return ans
+//}
