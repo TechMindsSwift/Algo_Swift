@@ -1102,8 +1102,26 @@ import UIKit
 //    }
 //    return n.isMultiple(of: 2) ? num[0] : num[1]
 //}
-// k의 갯수 
-func solution(_ i:Int, _ j:Int, _ k:Int) -> Int {
-    
-    return (i...j).map{"\($0)".filter{"\($0)".contains("\(k)")}.count}.reduce(0,+)
+// k의 갯수
+//func solution(_ i:Int, _ j:Int, _ k:Int) -> Int {
+//    
+//    return (i...j).map{"\($0)".filter{"\($0)".contains("\(k)")}.count}.reduce(0,+)
+//}
+
+// 짝지어 제거하기
+// pop
+
+func solution(_ s:String) -> Int{
+    var s = s // baabaa
+    var st:[String] = []
+    while !s.isEmpty {
+        // st의 마지막이 있다면
+        if st.last ?? "0" == "\(s.first)" { // 같다면
+            st.popLast()
+            s.removeFirst()
+        } else {
+            st.append("\(s.removeFirst())")
+        }
+    }
+    return st.isEmpty ? 1 : 0
 }

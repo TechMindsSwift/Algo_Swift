@@ -26,22 +26,20 @@ import Foundation
 //    }
 //    print("NE")
 //}
-
-// 1620
-let input = readLine()!.split(separator: " ")
-var dict1 = [Int: String]()
-var dict2 = [String: Int]()
-for i in 1...Int(input[0])! {
-    let str = readLine()!
-    dict1[i] = str
-    dict2[str] = i
-}
-for i in 1...Int(input[1])! {
-    let s = readLine()!
-    if let a = Int(s) {
-        print(dict1[a, default: ""])
-    } else {
-        print(dict2[s, default: 0])
-    }
-}
-
+//짝지어 제거하기 
+//func solution(_ s:String) -> Int{
+//    
+//    var st:[Character] = []
+//     
+//    for i in s {
+//        if st.last == i {
+//            st.popLast()
+//        } else {
+//            st.append(i)
+//        }
+//
+//    }
+//     
+//    return st.isEmpty ? 0 : 1
+//}
+//solution("baabaa")
