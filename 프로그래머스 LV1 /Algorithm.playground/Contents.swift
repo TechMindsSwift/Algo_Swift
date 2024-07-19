@@ -1089,8 +1089,21 @@ import UIKit
 //}
 //print(solution(15))
 
-func solution(_ my_string:String) -> String {
-    var myString = my_string.lowercased()
-    myString.sorted().map{String($0)}.joined()
-    return
+// 피보나치 수
+
+//func solution(_ n:Int) -> Int {
+//    var num = [0,1]
+//    for i in 2...n {
+//        if i.isMultiple(of: 2) {
+//            num[0] = (num[0] + num[1]) % 1234567
+//        } else {
+//            num[1] = (num[1] + num[0]) % 1234567
+//        }
+//    }
+//    return n.isMultiple(of: 2) ? num[0] : num[1]
+//}
+// k의 갯수 
+func solution(_ i:Int, _ j:Int, _ k:Int) -> Int {
+    
+    return (i...j).map{"\($0)".filter{"\($0)".contains("\(k)")}.count}.reduce(0,+)
 }
