@@ -388,4 +388,77 @@ import Foundation
 //    return (ingredient.count - hambuger.count) / 4
 //}
 //print(solution([2, 1, 1, 2, 3, 1, 2, 3, 1]     ))
+//func solution(_ numbers:[Int], _ hand:String) -> String {
+//    var ans = ""
+//    let keypad: [Int: (Int, Int)] = [
+//            1: (0, 0), 2: (0, 1), 3: (0, 2),
+//            4: (1, 0), 5: (1, 1), 6: (1, 2),
+//            7: (2, 0), 8: (2, 1), 9: (2, 2),
+//            0: (3, 1)
+//        ]
+//    
+//    var last_left = (3,0)
+//    var last_right = (3,2)
+//    
+//    for i in numbers {
+//        let target = keypad[i]!
+//        switch i {
+//            case 1,4,7 :
+//                ans.append("L")
+//                last_left = target
+//            case 3,6,9 :
+//                ans.append("R")
+//                last_right = target
+//            default:
+//            let leftDistance = abs(last_left.0 - target.0) + abs(last_left.1 - target.1)
+//            let rightDistance = abs(last_right.0 - target.0) + abs(last_right.1 - target.1)
+//            if leftDistance < rightDistance {
+//                ans.append("L")
+//                last_left = target
+//            } else if rightDistance < leftDistance {
+//                ans.append("R")
+//                last_right = target
+//            } else {
+//                if hand == "left" {
+//                    ans.append("L")
+//                    last_left = target
+//                } else {
+//                    ans.append("R")
+//                    last_right = target
+//                }
+//            }
+//        }
+//    }
+//    
+//    return ans
+//}
+//solution([1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5], "right")
 
+//func solution(_ s:String) -> Int {
+//    let dict = ["]":"[", ")" : "(", "}" : "{"] // 짝을 이뤄줌
+//    var re = 0
+//    var s = s
+//
+//    for i in 1 ..< s.count {
+//        var str = ""
+//        for i in s {
+//            if let last = str.last {
+//                if "\(last)" == dict["\(i)"] ?? "2" {
+//                    str.removeLast()
+//                } else {
+//                    str.append(i)
+//                }
+//            } else {
+//                str.append(i)
+//            }
+//        
+//        }
+//        if str.isEmpty {
+//            re += 1
+//        }
+//        s.append(s.removeFirst())
+//    }
+//    return re
+//}
+//
+//solution("[](){}")
